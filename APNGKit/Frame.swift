@@ -30,9 +30,9 @@ import UIKit
 *  Represents a frame in an APNG file. 
 *  It contains a whole IDAT chunk data for a PNG image.
 */
-struct Frame {
+public struct Frame {
     
-    var image: UIImage?
+    public var image: UIImage?
     
     /// Data chunk.
     var bytes: UnsafeMutablePointer<UInt8>
@@ -54,7 +54,7 @@ struct Frame {
     /// How many bytes in a row. Regularly it is width * (bitDepth / 2)
     let bytesInRow: Int
     
-    var duration: NSTimeInterval = 0
+    public var duration: NSTimeInterval = 0
     
     init(length: UInt32, bytesInRow: UInt32) {
         self.length = Int(length)
@@ -84,7 +84,7 @@ struct Frame {
 }
 
 extension Frame: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         return "<Frame: \(self.bytes)))> duration: \(self.duration), length: \(length)"
     }
 }
@@ -98,7 +98,7 @@ extension Frame: CustomDebugStringConvertible {
         return nil
     }
     
-    var debugDescription: String {
+    public var debugDescription: String {
         return "\(description)\ndata: \(data)"
     }
 }
